@@ -11,6 +11,8 @@ public class User {
 
     private BigDecimal age;
 
+    private String mail;
+
     public BigDecimal getId() {
         return id;
     }
@@ -41,5 +43,13 @@ public class User {
 
     public void setAge(BigDecimal age) {
         this.age = age;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail == null ? null : mail.trim();
     }
 }

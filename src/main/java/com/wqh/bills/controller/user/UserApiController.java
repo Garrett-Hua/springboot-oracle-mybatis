@@ -1,6 +1,7 @@
 package com.wqh.bills.controller.user;
 
 import com.wqh.bills.entity.User;
+import com.wqh.bills.model.user.LoginRecord;
 import com.wqh.bills.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserApiController {
 
     @Autowired
@@ -23,5 +24,10 @@ public class UserApiController {
     @RequestMapping("/selectUserList")
     public List<User> selectUserList(){
         return userService.selectUserList();
+    }
+
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public boolean login(@ModelAttribute LoginRecord loginRecord){
+        return userService.login(loginRecord);
     }
 }

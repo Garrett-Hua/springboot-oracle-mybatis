@@ -6,9 +6,10 @@
     <result column="NAME" property="name" jdbcType="VARCHAR" />
     <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
     <result column="AGE" property="age" jdbcType="DECIMAL" />
+    <result column="MAIL" property="mail" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, NAME, PASSWORD, AGE
+    ID, NAME, PASSWORD, AGE, MAIL
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
     select 
@@ -16,15 +17,23 @@
     from T_USER
     where ID = #{id,jdbcType=DECIMAL}
   </select>
+  <select id="selectUserList" resultMap="BaseResultMap">
+    SELECT * FROM T_USER
+  </select>
+
+  <select id="login" resultType="com.wqh.bills.entity.User">
+    select * from T_USER WHERE NAME = #{name} AND PASSWORD = #{password}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
     delete from T_USER
     where ID = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="com.wqh.bills.entity.User" >
     insert into T_USER (ID, NAME, PASSWORD, 
-      AGE)
+      AGE, MAIL)
     values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{age,jdbcType=DECIMAL})
+      #{age,jdbcType=DECIMAL}, #{mail,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.wqh.bills.entity.User" >
     insert into T_USER
@@ -41,6 +50,9 @@
       <if test="age != null" >
         AGE,
       </if>
+      <if test="mail != null" >
+        MAIL,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -54,6 +66,9 @@
       </if>
       <if test="age != null" >
         #{age,jdbcType=DECIMAL},
+      </if>
+      <if test="mail != null" >
+        #{mail,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -69,6 +84,9 @@
       <if test="age != null" >
         AGE = #{age,jdbcType=DECIMAL},
       </if>
+      <if test="mail != null" >
+        MAIL = #{mail,jdbcType=VARCHAR},
+      </if>
     </set>
     where ID = #{id,jdbcType=DECIMAL}
   </update>
@@ -76,11 +94,8 @@
     update T_USER
     set NAME = #{name,jdbcType=VARCHAR},
       PASSWORD = #{password,jdbcType=VARCHAR},
-      AGE = #{age,jdbcType=DECIMAL}
+      AGE = #{age,jdbcType=DECIMAL},
+      MAIL = #{mail,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=DECIMAL}
   </update>
-
-  <select id="selectUserList" resultMap="BaseResultMap">
-    select * from T_USER
-  </select>
 </mapper>

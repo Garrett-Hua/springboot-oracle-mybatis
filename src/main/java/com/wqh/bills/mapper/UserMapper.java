@@ -1,6 +1,7 @@
 package com.wqh.bills.mapper;
 
 import com.wqh.bills.entity.User;
+import com.wqh.bills.model.user.LoginRecord;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     List<User> selectUserList();
+
+    User login(LoginRecord loginRecord);
 }

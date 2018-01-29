@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>登陆页面</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <!-- 表单  水平表单-->
+            <form class="form-horizontal" method="post" action="/api/user/login">
+                <!-- 用户名 -->
+                <div class="form-group has-feedback">
+                    <label class="col-sm-3 control-label" for="name">UserName</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="name" name="name"
+                               placeholder="Enter username"/>
+                        <span class=""></span>
+                    </div>
+                </div>
+                <!-- 密码 -->
+                <div class="form-group has-feedback">
+                    <label class="col-sm-3 control-label" for="password">PassWord</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="password" name="password"
+                             placeholder="Enter password"/>
+                    <span class=""></span>
+                </div>
+                </div>
+                <!-- 功能按钮 -->
+                <p class="text-right">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary">
+                        Submit
+                    </button>
+                    <button type="reset" class="btn btn-danger">
+                        Reset
+                    </button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<footer class="navbar-fixed-bottom text-center">
+    &copy; 2018
+</footer>
+</body>
+</html>
